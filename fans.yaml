@@ -1,0 +1,46 @@
+- platform: template
+  fans:
+    office_fan:
+      friendly_name: "Office Fan"
+      value_template: "{{ states('input_boolean.office_fan_state') }}"
+      speed_template: "{{ states('input_select.office_fan_speed') }}"
+      turn_on:
+      turn_off:
+      set_speed:
+      speeds:
+          - 'low'
+          - 'medium'
+          - 'high'
+    master_fan:
+      friendly_name: "Master Bedroom Fan"
+      value_template: "{{ states('input_boolean.master_fan_state') }}"
+      speed_template: "{{ states('input_select.master_fan_speed') }}"
+      turn_on:
+      turn_off:
+      set_speed:
+      speeds:
+          - 'low'
+          - 'medium'
+          - 'high'
+    bedroom_fan:
+      friendly_name: "Bedroom Fan"
+      value_template: "{{ states('input_boolean.bedroom_fan_state') }}"
+      speed_template: "{{ states('input_select.bedroom_fan_speed') }}"
+      turn_on:
+      turn_off:
+      set_speed:
+      speeds:
+          - 'low'
+          - 'medium'
+          - 'high'
+    nursery_fan:
+      friendly_name: "Nursery Fan"
+      value_template: "{{ states('input_boolean.nursery_fan_state') }}"
+      speed_template: "{{ states('input_select.nursery_fan_speed') }}"
+      turn_on:
+      turn_off:
+      set_speed:
+      speeds:
+          - 'low'
+          - 'medium'
+          - 'high'

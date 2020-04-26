@@ -1,0 +1,18 @@
+- platform: template
+  sensors:
+    washer_sensor:
+      friendly_name: "Washer"
+      device_class: power
+      delay_off:
+        minutes: 3
+      value_template: >-
+        {{ is_state('binary_sensor.washer', 'on') }}
+      icon_template: mdi:washing-machine
+    dryer_sensor:
+      friendly_name: "Dryer"
+      device_class: power
+      delay_off:
+        minutes: 6
+      value_template: >-
+        {{ is_state('binary_sensor.dryer', 'on') }}
+      icon_template: mdi:tumble-dryer

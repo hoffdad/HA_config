@@ -1,0 +1,15 @@
+- platform: template
+  sensors:
+    schluter_floor_heat:
+      friendly_name: "Schluter Floor Heat"
+      unit_of_measurement: '°F'
+      value_template: "{{states('climate.floor_heat')}}"
+      icon_template: mdi:fire
+      attribute_templates:
+        min_temp: "{{((state_attr('climate.floor_heat', 'min_temp')* 9 / 5)+ 32)|round(1)}}"
+        max_temp: "{{((state_attr('climate.floor_heat', 'max_temp')* 9 / 5)+ 32)|round(1)}}"
+        current_temperature: "{{((state_attr('climate.floor_heat', 'current_temperature')* 9 / 5)+ 32)|round(1)}}"
+        temperature: "{{((state_attr('climate.floor_heat', 'temperature')* 9 / 5)+ 32)|round(1)}}"
+        hvac_action: "{{state_attr('climate.floor_heat', 'hvac_action')}}"
+        friendly_name: "{{state_attr('climate.floor_heat', 'friendly_name')}}"
+        supported_features: "{{state_attr('climate.floor_heat', 'supported_features')}}"

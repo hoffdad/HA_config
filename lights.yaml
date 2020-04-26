@@ -1,0 +1,33 @@
+# Magiclight Wifi Bulbs
+- platform: decora_wifi
+  username: !secret leviton_username
+  password: !secret leviton_password
+- platform: flux_led
+  #automatic_add: true
+  devices:
+    192.168.0.21:
+      name: Porch 1
+    192.168.0.22:
+      name: Porch 2
+    192.168.0.23:
+      name: Porch 3
+    192.168.0.24:
+      name: Porch 4
+    192.168.0.25:
+      name: Table 1
+    192.168.0.26:
+      name: Table 2  
+- platform: template
+  lights:
+    undercounter_lights:
+      friendly_name: "Undercounter Lights"
+      icon_template: mdi:track-light
+      turn_on:
+      turn_off:
+      set_level:
+    fireplace:
+      friendly_name: "Fireplace"
+      icon_template: mdi:fire
+      turn_on:
+      turn_off:
+      set_level:

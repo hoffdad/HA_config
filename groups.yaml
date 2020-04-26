@@ -1,0 +1,71 @@
+default_view:
+  view: true
+  icon: mdi:home
+  entities:
+    - group.kitchen
+    - group.family_room
+    - group.office
+    - group.craft_room
+    - group.master_bedroom
+    - group.basement
+    - group.front_porch
+    - group.backyard
+kitchen:
+  icon: mdi:silverware-fork-knife
+  entities:
+    - switch.kitchen_switch
+    - switch.warmer
+family_room:
+  name: Family Room
+  entities:
+    - switch.entry_light
+    - switch.can_lights
+    - switch.family_room
+    - switch.salt_lamp
+    - switch.fireplace_plug
+office:
+  name: office
+  entities:
+    - switch.desk
+    - light.front_light
+craft_room:
+  name: Craft Room
+  entities:
+    - switch.craft_light
+    - switch.sofa_light
+master_bedroom:
+  name: Master Bedroom
+  entities:
+    - light.dc4f22e392f1_192_168_0_14
+    - light.dc4f22e392f5_192_168_0_153
+    - switch.space_heater
+basement:
+  name: Basement
+  entities:
+    - switch.washer
+front_porch:
+  name: Front Porch
+  entities:
+    - switch.front_porch
+backyard:
+  name: Backyard
+  entities:
+    - light.backlight
+    - light.backyard_cans
+
+#upstairs:
+#  name: Kids
+#  icon: mdi:account-multiple
+
+#climate:
+#  name: Climate
+#  view: false
+#  entities:
+#    - sensor.bedroom_temp
+#    - sensor.porch_temp
+#awesome_people:
+#  name: Awesome People
+#  view: false
+#  entities:
+#    - device_tracker.dad_smith
+#    - device_tracker.mom_smith

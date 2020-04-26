@@ -1,0 +1,23 @@
+ui_craft_light:
+  name: Craft Light
+ui_desk_light:
+  name: Desk Light
+ui_foyer_light:
+  name: Foyer Light
+ui_fridge_light:
+  name: Fridge Light
+ui_garage_lights:
+  name: Garage Lights
+ui_kitchen_light:
+  name: Kitchen Light
+ui_office_light:
+  name: Office Light
+ui_playroom_light:
+  name: Playroom Light
+ui_porch_chandelier:
+  name: Porch Chandelier
+ui_porch_lights:
+  name: Porch Lights
+ui_sofa_light:
+  name: Sofa Light
+  

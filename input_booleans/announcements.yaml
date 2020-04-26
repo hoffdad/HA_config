@@ -1,0 +1,20 @@
+alexa_announcement:
+  name: Alexa Announcement
+  initial: off
+  icon: mdi:amazon-alexa
+kitchen_announcement:
+  name: Kitchen Announcement
+  initial: off
+  icon: mdi:silverware-variant
+family_announcement:
+  name: Family Announcement
+  initial: off
+  icon: mdi:account-supervisor
+office_announcement:
+  name: Office Announcement
+  initial: off
+  icon: mdi:desktop-classic
+flash_lights:
+  name: Flash Lights
+  initial: off
+  icon: mdi:flash-circle

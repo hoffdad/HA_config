@@ -1,0 +1,27 @@
+- platform: template
+  sensors:
+    withings_weight_lbs_michael:
+      friendly_name: "Michael Weight"
+      unit_of_measurement: 'lbs'
+      value_template: "{{ (states('sensor.withings_weight_kg_michael') | float * 2.20462262185) | round(2) }}"
+      icon_template: mdi:weight-pound
+    withings_bone_mass_lbs_michael:
+      friendly_name: "Michael Bone Mass"
+      unit_of_measurement: 'lbs'
+      value_template: "{{ (states('sensor.withings_bone_mass_kg_michael') | float * 2.20462262185) | round(2) }}"
+      icon_template: mdi:weight-pound
+    withings_fat_free_mass_lbs_michael:
+      friendly_name: "Michael Fat Free Mass"
+      unit_of_measurement: 'lbs'
+      value_template: "{{ (states('sensor.withings_fat_free_mass_kg_michael') | float * 2.20462262185) | round(2) }}"
+      icon_template: mdi:weight-pound
+    withings_fat_mass_lbs_michael:
+      friendly_name: "Michael Fat Mass"
+      unit_of_measurement: 'lbs'
+      value_template: "{{ (states('sensor.withings_fat_mass_kg_michael') | float * 2.20462262185) | round(2) }}"
+      icon_template: mdi:weight-pound
+    withings_muscle_mass_lbs_michael:
+      friendly_name: "Michael Muscle Mass"
+      unit_of_measurement: 'lbs'
+      value_template: "{{ (states('sensor.withings_muscle_mass_kg_michael') | float * 2.20462262185) | round(2) }}"
+      icon_template: mdi:weight-pound

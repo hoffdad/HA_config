@@ -1,0 +1,50 @@
+- platform: statistics
+  entity_id:  sensor.daily_usage
+  name: Daily Energy Usage
+- platform: template
+  sensors:
+    daily_energy_usage_max:
+      value_template: "{{ state_attr('sensor.daily_energy_usage', 'max_value') }}"
+      unit_of_measurement: kWh
+    washer_amps:
+      friendly_name_template: "{{ states.switch.washer.name}} Current Amps"
+      value_template: '{{ states.switch.washer.attributes["current_a"] | float }}'
+      unit_of_measurement: 'W'
+    washer_watts:
+      friendly_name_template: "{{ states.switch.washer.name}} Current Consumption"
+      value_template: '{{ states.switch.washer.attributes["current_power_w"] | float }}'
+      unit_of_measurement: 'W'
+    washer_sensor:
+      friendly_name: "Washer"
+      value_template: >-
+        {% set energy = states('sensor.washer_watts') | float(default=-1) %}
+        {% if energy > 0.6 %}
+          on
+        {% else %}
+          off
+        {% endif %}
+      icon_template: mdi:washing-machine
+      entity_picture_template: >-
+        {% set energy = states('sensor.washer_watts') | float(default=-1) %}
+        {% if energy > 0.6 %}
+          /local/icons/washer_on.png
+        {% else %}
+          /local/icons/washer_off.png
+        {% endif %}
+    space_heater_watts:
+      friendly_name_template: "Sapce Heater Current Consumption"
+      value_template: '{{ states.switch.space_heater.attributes["current_power_w"] | float }}'
+      unit_of_measurement: 'W'
+    space_heater_sensor:
+      friendly_name: Space Heater
+      value_template: >-
+        {% set energy = states('sensor.space_heater_watts') | float %}
+        {% if energy > 20 %}
+          on
+        {% elif energy > 1 %}
+          standby
+        {% else %}
+          off
+        {% endif %}
+      icon_template: mdi:waves
+      

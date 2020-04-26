@@ -1,0 +1,202 @@
+- platform: template
+  sensors:
+    michael_location:
+      friendly_name: "Michael Location"
+      value_template: >-
+        {% if is_state('device_tracker.michael_g7', 'home') %}
+          Home
+        {% elif (state_attr('device_tracker.life360_michael', 'address') == state_attr('device_tracker.life360_michael', 'place')) and (state_attr('device_tracker.life360_michael', 'place') != '-' and state_attr('device_tracker.life360_michael', 'place') != none) %}
+          {{state_attr('device_tracker.life360_michael', 'place')}}
+        {% elif (states('device_tracker.life360_michael') != 'moving') and (states('device_tracker.life360_michael') != 'driving') %}
+          {% if states('device_tracker.life360_michael') != 'not_home' %}
+            {{ state_attr('sensor.michael', 'devicetracker_zone') }}       
+          {% elif state_attr('sensor.michael', 'place_name') != '-' %}
+              {{ state_attr('sensor.michael', 'place_name') }}
+          {% else %}
+            {% if state_attr('sensor.michael', 'street') != '-' %}{{state_attr('sensor.michael', 'street')}}{% endif %}{% if state_attr('sensor.michael', 'city') != '-' %}, {{state_attr('sensor.michael', 'city')}}, {% if state_attr('sensor.michael', 'state_province') != '-' %}{{state_attr('sensor.michael', 'state_province')}}{% endif %}{% endif %}
+          {% endif %}
+        {% else %}
+          {% if state_attr('sensor.michael', 'place_name') != '-' %}
+            near {{ state_attr('sensor.michael', 'place_name') }}
+          {% else %}
+            on {% if state_attr('sensor.michael', 'street') != '-' %}{{state_attr('sensor.michael', 'street')}}{% endif %}          
+          {% endif %}
+        {% endif %}
+    michael_status:
+      friendly_name: "Michael"
+      value_template: >-
+        {% if is_state('device_tracker.michael_g7', 'home') %}
+          Home
+        {% elif (state_attr('device_tracker.life360_michael', 'address') == state_attr('device_tracker.life360_michael', 'place')) and (state_attr('device_tracker.life360_michael', 'place') != '-' and state_attr('device_tracker.life360_michael', 'place') != none) %}
+          {{ states('sensor.michael_location') | replace("Street","St") | replace("Avenue","Ave") | replace("Boulevard","Blvd") | replace("Road","Rd") | replace("Parkway","Pkwy") | replace("Freeway","Fwy") | replace("Drive","Dr") | replace("Extension","Ext") }}
+        {% elif states('device_tracker.life360_michael') == 'driving' %}
+          Driving {{ states('sensor.michael_location') | replace("Street","St") | replace("Avenue","Ave") | replace("Boulevard","Blvd") | replace("Road","Rd") | replace("Parkway","Pkwy") | replace("Freeway","Fwy") | replace("Drive","Dr") | replace("Extension","Ext") }}
+        {% elif states('device_tracker.life360_michael') == 'moving' %}
+          Moving {{ states('sensor.michael_location') | replace("Street","St") | replace("Avenue","Ave") | replace("Boulevard","Blvd") | replace("Road","Rd") | replace("Parkway","Pkwy") | replace("Freeway","Fwy") | replace("Drive","Dr") | replace("Extension","Ext") }}
+        {% else %}
+          {{ states('sensor.michael_location') | replace("Street","St") | replace("Avenue","Ave") | replace("Boulevard","Blvd") | replace("Road","Rd") | replace("Parkway","Pkwy") | replace("Freeway","Fwy") | replace("Drive","Dr") | replace("Extension","Ext") }}
+        {% endif %} 
+      entity_picture_template: >-
+        {% if is_state('sensor.michael_location', 'Planet Fitness') %}
+          /local/images/michael/gym.png
+        {% elif is_state('sensor.michael_location', 'Giant Eagle Supermarket') %}
+          /local/images/michael/grocery.png
+        {% elif state_attr('sensor.michael', 'place_type') == 'supermarket' %}
+          /local/images/michael/grocery.png
+        {% elif is_state('sensor.michael_location', 'Rainbow Connection') %}
+          /local/images/michael/daycare.png
+        {% elif is_state('sensor.michael_location', 'Work') %}
+          /local/images/michael/work.png
+        {% elif states('device_tracker.life360_michael') == 'driving' %}
+          /local/images/michael/driving.png
+        {% elif states('device_tracker.life360_michael') == 'moving' %}
+          /local/images/michael/moving.png
+        {%else %} /local/images/michael/home.png{%endif%}
+    michael_at_loc_since:
+      friendly_name: "At Location Since"
+      value_template: >-
+        {% set time = (states.sensor.michael_location.last_changed.strftime("%s") | int ) %}
+        {% set day = time | timestamp_custom("%-d") | int %}
+        {% if (now().day - day) == 1 %}
+          Since Yesterday at {{ time | timestamp_custom("%-I:%M %p") }}
+        {% elif (now().day - day) < 0 %}
+          {% if now().day %}
+            Since Yesterday at {{ time | timestamp_custom("%-I:%M %p") }}
+          {% else %}
+            Since {{ time | timestamp_custom("%a, %b %-d at %-I:%M %p") }}
+          {% endif %}
+        {% elif (now().day - day) > 1 %}
+          Since {{ time | timestamp_custom("%a, %b %-d at %-I:%M %p") }}
+        {% else  %}
+          Since {{ time | timestamp_custom("%-I:%M %p") }}
+        {% endif %}
+    michael_place_type:
+      friendly_name: "Michael Place Type"
+      value_template: >-
+        {{ state_attr('sensor.michael', 'place_type')  }}
+    michael_battery:
+      friendly_name: "Battery"
+      unit_of_measurement: '%'
+      value_template: "{{states.device_tracker.life360_michael.attributes.battery }}"
+      icon_template: >-
+        mdi:battery{% if is_state_attr('device_tracker.life360_michael', 'battery_charging', true) %}-charging{% else %}{% endif %}{% if 0<(state_attr('device_tracker.life360_michael', 'battery') | float / 10 ) | round(0) * 10 < 100%}-{{ (state_attr('device_tracker.life360_michael', 'battery') | float / 10 ) | round(0) * 10 }}{% else %}{% if (state_attr('device_tracker.life360_michael', 'battery') | float / 10 ) | round(0) * 10 == 0%}-outline{%else%}{% if is_state_attr('device_tracker.life360_michael', 'battery_charging', true) %}-100{% endif %}{% endif %}{% endif %}
+    michael_wifi:
+      friendly_name: "WiFi"
+      value_template: >-
+        {% if is_state_attr('device_tracker.life360_michael', 'wifi_on', true) %}
+          on
+        {% else %}
+          off
+        {% endif %}
+      icon_template: >-
+        {% if is_state_attr('device_tracker.life360_michael', 'wifi_on', true) %}
+          mdi:wifi
+        {% else %}
+          mdi:wifi-off
+        {% endif %}
+    michael_height:
+      value_template: >-
+        {% if is_state('binary_sensor.michael_moving', 'on') %}
+          70px
+        {% else %}
+          40px
+        {% endif %}
+    michelle_location:
+      friendly_name: "Michelle Location"
+      value_template: >-
+        {% if is_state('device_tracker.michelle_g7', 'home') %}
+          Home
+        {% elif (state_attr('device_tracker.life360_michelle', 'address') == state_attr('device_tracker.life360_michelle', 'place')) and (state_attr('device_tracker.life360_michelle', 'place') != '-' and state_attr('device_tracker.life360_michelle', 'place') != none) %}
+          {{state_attr('device_tracker.life360_michelle', 'place')}}
+        {% elif (states('device_tracker.life360_michelle') != 'moving') and (states('device_tracker.life360_michelle') != 'driving') %}
+          {% if states('device_tracker.life360_michelle') != 'not_home' %}
+            {{ state_attr('sensor.michelle', 'devicetracker_zone') }}       
+          {% elif state_attr('sensor.michelle', 'place_name') != '-' %}
+              {{ state_attr('sensor.michelle', 'place_name') }}
+          {% else %}
+            {% if state_attr('sensor.michelle', 'street') != '-' %}{{state_attr('sensor.michelle', 'street')}}{% endif %}{% if state_attr('sensor.michelle', 'city') != '-' %}, {{state_attr('sensor.michelle', 'city')}}, {% if state_attr('sensor.michelle', 'state_province') != '-' %}{{state_attr('sensor.michelle', 'state_province')}}{% endif %}{% endif %}
+          {% endif %}
+        {% else %}
+          {% if state_attr('sensor.michelle', 'place_name') != '-' %}
+            near {{ state_attr('sensor.michelle', 'place_name') }}
+          {% else %}
+            on {% if state_attr('sensor.michelle', 'street') != '-' %}{{state_attr('sensor.michelle', 'street')}}{% endif %}          
+          {% endif %}
+        {% endif %}
+    michelle_status:
+      friendly_name: "Michelle"
+      value_template: >-
+        {% if is_state('device_tracker.michelle_g7', 'home') %}
+          Home
+        {% elif (state_attr('device_tracker.life360_michelle', 'address') == state_attr('device_tracker.life360_michelle', 'place')) and (state_attr('device_tracker.life360_michelle', 'place') != '-' and state_attr('device_tracker.life360_michelle', 'place') != none) %}
+          {{ states('sensor.michelle_location') | replace("Street","St") | replace("Avenue","Ave") | replace("Boulevard","Blvd") | replace("Road","Rd") | replace("Parkway","Pkwy") | replace("Freeway","Fwy") | replace("Drive","Dr") | replace("Extension","Ext") }}
+        {% elif states('device_tracker.life360_michelle') == 'driving' %}
+          Driving {{ states('sensor.michelle_location') | replace("Street","St") | replace("Avenue","Ave") | replace("Boulevard","Blvd") | replace("Road","Rd") | replace("Parkway","Pkwy") | replace("Freeway","Fwy") | replace("Drive","Dr") | replace("Extension","Ext") }}
+        {% elif states('device_tracker.life360_michelle') == 'moving' %}
+          Moving {{ states('sensor.michelle_location') | replace("Street","St") | replace("Avenue","Ave") | replace("Boulevard","Blvd") | replace("Road","Rd") | replace("Parkway","Pkwy") | replace("Freeway","Fwy") | replace("Drive","Dr") | replace("Extension","Ext") }}
+        {% else %}
+          {{ states('sensor.michelle_location') | replace("Street","St") | replace("Avenue","Ave") | replace("Boulevard","Blvd") | replace("Road","Rd") | replace("Parkway","Pkwy") | replace("Freeway","Fwy") | replace("Drive","Dr") | replace("Extension","Ext") }}
+        {% endif %} 
+      entity_picture_template: >-
+        {% if is_state('sensor.michelle_location', 'Giant Eagle Supermarket') %}
+          /local/images/michelle/grocery.png
+        {% elif state_attr('sensor.michelle', 'place_type') == 'supermarket' %}
+          /local/images/michelle/grocery.png
+        {% elif is_state('sensor.michelle_location', 'Rainbow Connection') %}
+          /local/images/michelle/daycare.png
+        {% elif is_state('sensor.michelle_location', 'Work') %}
+          /local/images/michelle/work.png
+        {% elif states('device_tracker.life360_michelle') == 'driving' %}
+          /local/images/michelle/driving.png
+        {% elif states('device_tracker.life360_michelle') == 'moving' %}
+          /local/images/michelle/moving.png
+        {%else %} /local/images/michelle/home.png{%endif%}
+    michelle_at_loc_since:
+      friendly_name: "At Location Since"
+      value_template: >-
+        {% set time = (states.sensor.michelle_location.last_changed.strftime("%s") | int ) %}
+        {% set day = time | timestamp_custom("%-d") | int %}
+        {% if (now().day - day) == 1 %}
+          Since Yesterday at {{ time | timestamp_custom("%-I:%M %p") }}
+        {% elif (now().day - day) < 0 %}
+          {% if now().day %}
+            Since Yesterday at {{ time | timestamp_custom("%-I:%M %p") }}
+          {% else %}
+            Since {{ time | timestamp_custom("%a, %b %-d at %-I:%M %p") }}
+          {% endif %}
+        {% elif (now().day - day) > 1 %}
+          Since {{ time | timestamp_custom("%a, %b %-d at %-I:%M %p") }}
+        {% else  %}
+          Since {{ time | timestamp_custom("%-I:%M %p") }}
+        {% endif %}
+    michelle_place_type:
+      friendly_name: "Michelle Place Type"
+      value_template: >-
+        {{ state_attr('sensor.michelle', 'place_type') }}
+    michelle_battery:
+      friendly_name: "Battery"
+      unit_of_measurement: '%'
+      value_template: "{{states.device_tracker.life360_michelle.attributes.battery }}"
+      icon_template: >-
+        mdi:battery{% if is_state_attr('device_tracker.life360_michelle', 'battery_charging', true) %}-charging{% else %}{% endif %}{% if 0<(state_attr('device_tracker.life360_michelle', 'battery') | float / 10 ) | round(0) * 10 < 100%}-{{ (state_attr('device_tracker.life360_michelle', 'battery') | float / 10 ) | round(0) * 10 }}{% else %}{% if (state_attr('device_tracker.life360_michelle', 'battery') | float / 10 ) | round(0) * 10 == 0%}-outline{%else%}{% if is_state_attr('device_tracker.life360_michelle', 'battery_charging', true) %}-100{% endif %}{% endif %}{% endif %}
+    michelle_wifi:
+      friendly_name: "WiFi"
+      value_template: >-
+        {% if is_state_attr('device_tracker.life360_michelle', 'wifi_on', true) %}
+          on
+        {% else %}
+          off
+        {% endif %}
+      icon_template: >-
+        {% if is_state_attr('device_tracker.life360_michelle', 'wifi_on', true) %}
+          mdi:wifi
+        {% else %}
+          mdi:wifi-off
+        {% endif %}
+    michelle_height:
+      value_template: >-
+        {% if is_state('binary_sensor.michelle_moving', 'on') %}
+          70px
+        {% else %}
+          40px
+        {% endif %}

@@ -1,0 +1,13 @@
+office_fan_state:
+  name: Bedroom Fan
+  icon: mdi:fan
+master_fan_state:
+  name: Master Bedroom Fan
+  icon: mdi:fan
+bedroom_fan_state:
+  name: Bedroom Fan
+  icon: mdi:fan
+nursery_fan_state:
+  name: Nursery Fan
+  icon: mdi:fan
+  

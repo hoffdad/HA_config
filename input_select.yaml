@@ -1,0 +1,20 @@
+office_fan_speed:
+  options:
+    - 'low'
+    - 'medium'
+    - 'high'
+master_fan_speed:
+  options:
+    - 'low'
+    - 'medium'
+    - 'high'
+bedroom_fan_speed:
+  options:
+    - 'low'
+    - 'medium'
+    - 'high'
+nursery_fan_speed:
+  options:
+    - 'low'
+    - 'medium'
+    - 'high'

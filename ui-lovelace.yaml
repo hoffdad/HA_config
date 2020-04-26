@@ -1,0 +1,26 @@
+resources: !include lovelace/resources.yaml
+button_card_templates: !include_dir_merge_named lovelace/button_card_templates/
+cch:
+  default_tab: main
+custom_header:
+  compact_mode: true
+preload:
+  - conditional
+  - picture-elements
+  - cover-entity-row
+  - alarm-panel
+  - light-entity
+  - vertical-stack-in-card
+  - 'custom:config-template-card'
+
+title: Hoffdad's House
+views:
+  - !include lovelace/views/home.yaml
+  - !include lovelace/views/panel.yaml
+  - !include lovelace/views/mobile_home.yaml
+  - !include lovelace/views/mobile_kitchen.yaml
+  - !include lovelace/views/mobile_family.yaml
+  - !include lovelace/views/mobile_bedroom.yaml
+  - !include lovelace/views/mobile_morning.yaml
+  - !include lovelace/views/new_home.yaml
+

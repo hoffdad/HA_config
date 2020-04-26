@@ -1,0 +1,215 @@
+homeassistant:
+  # Customization file
+  customize: !include customize.yaml
+  
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+  api_password: http_password
+lovelace:
+  mode: yaml
+  resources: !include lovelace/resources.yaml
+frontend:
+  themes: !include_dir_merge_named themes/
+customizer:
+  custom_ui: local
+  
+# SSL/TLS
+http:
+  base_url: !secret my_secret_url
+  ssl_certificate: /ssl/fullchain.pem
+  ssl_key: /ssl/privkey.pem
+
+#authorized_keys:
+#  - !secret authorized_key
+
+panel_custom:
+  - name: hassio-main
+    sidebar_title: Configurator
+    sidebar_icon: mdi:wrench
+    js_url: /api/hassio/app/entrypoint.js
+    url_path: configurator
+    embed_iframe: true
+    require_admin: true
+    config:
+      ingress: "core_configurator"
+
+#discovery:
+#  ignore:
+#    - plex_mediaserver
+
+logger:
+  default: error
+
+hacs:
+  token: !secret hacs_token
+
+recorder:
+  exclude:
+    event_types:
+      - service_removed
+      - service_executed
+      - platform_discovered
+      - homeassistant_start
+      - homeassistant_stop      
+      - feedreader
+      - service_registered
+      - call_service
+      - component_loaded
+      - logbook_entry
+      - system_log_event
+      - automation_triggered
+      - script_started
+      - timer_out_of_sync
+
+logbook: !include logbook.yaml
+automation: !include automations.yaml
+binary_sensor: !include_dir_merge_list binary_sensors/
+input_boolean: !include_dir_merge_named input_booleans/
+input_select: !include input_select.yaml
+#fan: !include fans.yaml
+light: !include lights.yaml
+sensor: !include_dir_merge_list sensors/
+switch: !include_dir_merge_list switches/
+zone: !include zones.yaml
+
+#rest_command:
+#  fan_commands:
+#    url: http://192.168.0.207/v2/devices/{{device_id}}/commands/{{command_id}}/tx
+#    method: PUT
+#    headers:
+#      content_type: 'application/json'
+#      BOND_Token: !secret bond_token
+#    payload: '{"device_id": "{{device_id}}","command_id": "{{command_id}}"}'
+
+bond:
+  host: !secret bond_ip
+  token: !secret bond_token 
+    
+blink:
+  username: !secret blink_username
+  password: !secret blink_password
+
+ecobee:
+  api_key: !secret ecobee_api
+
+device_tracker:
+  - platform: bluetooth_tracker
+    interval_seconds: 5
+
+media_player:
+  - platform: denonavr
+    host: 192.168.0.199
+    name: Home Theater
+  
+sensor places_michael:
+  - platform: places
+    name: Michael
+    devicetracker_id: device_tracker.life360_michael
+    options: zone,place
+    map_provider: google
+    map_zoom: 19
+    home_zone: zone.home
+    api_key: !secret email_michael
+
+sensor places_michelle:
+  - platform: places
+    name: Michelle
+    devicetracker_id: device_tracker.life360_michelle
+    options: zone, place
+    map_provider: google
+    map_zoom: 19
+    home_zone: zone.home
+    api_key: !secret email_michelle
+  
+# MyQ Garage Door
+cover:
+  - platform: myq
+    username: !secret myq_name
+    password: !secret myq_password
+    type: chamberlain
+    
+# Trackers
+life360:
+  accounts:
+    username: !secret life360_username
+    password: !secret life360_password
+  driving_speed: 10
+  max_update_wait:
+    minutes: 15
+  show_as_state:
+    - driving
+    - moving
+  # Set comm error thresholds so first is not logged,
+  # second is logged as a WARNING, and third and fourth
+  # are logged as ERRORs.
+  warning_threshold: 2
+  error_threshold: 3
+
+# Tuya Outlets
+tuya:
+  username: !secret tuya_name
+  password: !secret tuya_password
+  country_code: 1
+  platform: smart_life
+
+# EWElink 
+sonoff:
+  username: !secret sonoff_username
+  password: !secret sonoff_password
+  scan_interval: 60
+  grace_period: 600
+  api_region: us
+  entity_prefix: False
+  debug: False
+
+# Alexa Account
+alexa_media:
+  accounts:
+    - email: !secret amazon_user
+      password: !secret amazon_password
+      url: amazon.com 
+
+# Notifications
+notify:
+  - platform: html5
+    name: html5_notify
+    vapid_pub_key: !secret html5_public_key
+    vapid_prv_key: !secret html5_private_key
+    vapid_email: !secret my_email
+  - platform: alexa_media
+    name: alexa_media
+  - name: pushbullet
+    platform: pushbullet
+    api_key: !secret pushbullet_token
+
+# Sense
+sense:
+  email: !secret sense_name
+  password: !secret sense_password
+  timeout: 120
+
+# Google Calendar
+google:
+  client_id: !secret gCal_id
+  client_secret: !secret gCal_secret
+
+# IFTTT
+ifttt:
+  key: !secret ifttt_key
+
+# Google Text to speech
+tts:
+  - platform: google_translate
+    service_name: google_say
+
+# Schluter
+schluter:
+  username: !secret schluter_id
+  password: !secret schluter_secret
+
+# Withings Body+ Scale
+withings:
+  client_id: !secret withings_id
+  client_secret: !secret withings_secret
+  profiles:
+    - Michael

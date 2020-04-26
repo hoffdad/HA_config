@@ -1,0 +1,19 @@
+michael_home:
+  name: Michael Home
+  icon: mdi:human-male
+michelle_home:
+  name: Michelle Home
+  icon: mdi:human-female
+kids_guests:
+  name: Kids and Guests
+  icon: mdi:human-greeting
+home_occupied:
+  name: Home Occupied
+  icon: mdi:human-male-female
+just_home:
+  name: Just Home
+  icon: mdi:human-greeting
+garage_ignore:
+  name: Garage Ignore
+  icon: mdi:garage-alert
+  initial: off

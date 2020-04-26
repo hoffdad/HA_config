@@ -1,0 +1,30 @@
+- platform: wyzesense
+  device: "/dev/hidraw0"
+- platform: workday
+  country: US
+  province: OH
+- platform: template
+  sensors:
+    michael_moving:
+      friendly_name: "Michael Moving"
+      value_template: >-
+        {{ ((is_state('device_tracker.life360_michael', 'driving') or is_state('device_tracker.life360_michael', 'moving')) and 
+              (state_attr('device_tracker.life360_michael', 'address') != state_attr('device_tracker.life360_michael', 'place')) and 
+              (state_attr('device_tracker.life360_michael', 'place') == '-' and state_attr('device_tracker.life360_michael', 'place') == none)) }}
+    michelle_moving:
+      friendly_name: "Michelle Moving"
+      value_template: >-
+        {{ ((is_state('device_tracker.life360_michelle', 'driving') or is_state('device_tracker.life360_michelle', 'moving')) and 
+              (state_attr('device_tracker.life360_michelle', 'address') != state_attr('device_tracker.life360_michelle', 'place')) and 
+              (state_attr('device_tracker.life360_michelle', 'place') == '-' or state_attr('device_tracker.life360_michelle', 'place') == none)) }}
+    over_100m_away:
+      friendly_name: "Over 100 Miles Away"
+      value_template: >-
+        {{ state_attr('sensor.michael', 'distance_from_home_km')|float > 160 and state_attr('sensor.michelle', 'distance_from_home_km')|float > 160 }}
+    no_movement:
+      friendly_name: "No Movement in the House"
+      value_template: >-
+        {{ is_state('binary_sensor.wyze_kitchen_sensor', 'off')
+             and is_state('binary_sensor.thermostat_occupancy', 'off') 
+               and is_state('binary_sensor.office_occupancy', 'off')
+                 and is_state('binary_sensor.family_room_occupancy', 'off')}}

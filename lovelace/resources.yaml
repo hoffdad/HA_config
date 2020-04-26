@@ -1,0 +1,54 @@
+  - type: module
+    url: 'https://unpkg.com/@haiku-ui/haiku/dist/cards/haiku-room-card.js'
+  - type: module
+    url: 'https://unpkg.com/@haiku-ui/haiku/dist/cards/haiku-global-config.js'
+  - type: module
+    url: /community_plugin/config-template-card/config-template-card.js
+  - type: module
+    url: /community_plugin/lovelace-card-mod/card-mod.js
+  - type: module
+    url: /community_plugin/atomic_calendar/atomic_calendar.js
+  - type: module
+    url: /community_plugin/mini-graph-card/mini-graph-card-bundle.js
+  - type: module
+    url: /local/dark-sky-weather-card.js?v=7.1
+  - type: module
+    url: /community_plugin/button-card/button-card.js
+  - type: module
+    url: /community_plugin/banner-card/banner-card.js
+  - type: module
+    url: /community_plugin/decluttering-card/decluttering-card.js
+  - type: module
+    url: /community_plugin/custom-header/custom-header.js
+  - type: module
+    url: /community_plugin/circle-sensor-card/circle-sensor-card.js
+  - type: module
+    url: /community_plugin/lovelace-gap-card/gap-card.js
+  - type: js
+    url: /community_plugin/light-entity-row/light-entity-row.js
+  - type: module
+    url: /local/card-tools.js
+  - type: module
+    url: /community_plugin/secondaryinfo-entity-row/secondaryinfo-entity-row.js
+  - type: js
+    url: /local/community/lovelace-card-preloader/lovelace-card-preloader.js
+  - type: js
+    url: /community_plugin/fan-control-entity-row/fan-control-entity-row.js
+  - type: js
+    url: /community_plugin/vertical-stack-in-card/vertical-stack-in-card.js
+  - type: js
+    url: /community_plugin/calendar-card/calendar-card.js
+  - type: js
+    url: /community_plugin/lovelace-layout-card/layout-card.js
+  - type: js
+    url: /local/clock-card.js
+  - type: js
+    url: 'https://unpkg.com/moment@2.22.2/min/moment.min.js'
+  - url: 'https://fonts.googleapis.com/css?family=Raleway'
+    type: css
+  - type: css
+    url: /local/custom-ui/lovelace-font.css
+  - type: js
+    url: /local/community/hass-bha-icons/hass-bha-icons.js
+  - type: js
+    url: /local/icons/my-icons.js

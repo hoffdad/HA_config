@@ -1,0 +1,71 @@
+- platform: template
+  sensors:
+    ecobee_mode:
+      friendly_name: "Ecobee Mode"
+      value_template: "{{states.climate.thermostat.attributes.climate_mode }}"
+      entity_picture_template: >-
+        {% if is_state_attr('climate.thermostat', 'climate_mode', 'Workday') %}
+          /local/icons/work.png
+        {% elif is_state_attr('climate.thermostat', 'climate_mode', 'Home') %}
+          /local/icons/home.png
+        {% elif is_state_attr('climate.thermostat', 'climate_mode', 'Sleep') %}
+          /local/icons/sleep.png
+        {% else %}
+          /local/icons/away.png
+        {% endif %}
+    office_sensor:
+      friendly_name: "Office Sensor"
+      value_template: >-
+        {% if is_state('binary_sensor.office_occupancy', 'on') %}
+          detected
+        {% else %}
+          clear
+        {% endif %}
+      entity_picture_template: >-
+        {% if is_state('binary_sensor.office_occupancy', 'on') %}
+          /local/icons/motion.png
+        {% else %}
+          /local/icons/clear.png
+        {% endif %}
+    family_sensor:
+      friendly_name: "Family Room Sensor"
+      value_template: >-
+        {% if is_state('binary_sensor.family_room_occupancy', 'on') %}
+          detected
+        {% else %}
+          clear
+        {% endif %}
+      entity_picture_template: >-
+        {% if is_state('binary_sensor.family_room_occupancy', 'on') %}
+          /local/icons/motion.png
+        {% else %}
+          /local/icons/clear.png
+        {% endif %}
+    thermostat_sensor:
+      friendly_name: "Craft Room Sensor"
+      value_template: >-
+        {% if is_state('binary_sensor.thermostat_occupancy', 'on') %}
+          detected
+        {% else %}
+          clear
+        {% endif %}
+      entity_picture_template: >-
+        {% if is_state('binary_sensor.thermostat_occupancy', 'on') %}
+          /local/icons/motion.png
+        {% else %}
+          /local/icons/clear.png
+        {% endif %}
+    upstairs_sensor:
+      friendly_name: "Upstairs Sensor"
+      value_template: >-
+        {% if is_state('binary_sensor.upstairs_occupancy', 'on') %}
+          detected
+        {% else %}
+          clear
+        {% endif %}
+      entity_picture_template: >-
+        {% if is_state('binary_sensor.upstairs_occupancy', 'on') %}
+          /local/icons/motion.png
+        {% else %}
+          /local/icons/clear.png
+        {% endif %}

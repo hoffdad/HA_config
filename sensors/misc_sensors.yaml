@@ -1,0 +1,76 @@
+- platform: template
+  sensors:
+    next_bus:
+      friendly_name: Next Laketran Bus
+      icon_template: mdi:bus
+      value_template:  >-
+        {% if states.sensor.time.state < '05:00' %} None
+        {% elif states.sensor.time.state < '05:45' %} 5:50 AM 
+        {% elif states.sensor.time.state < '06:05' %} 6:10 AM
+        {% elif states.sensor.time.state < '06:20' %} 6:25 AM
+        {% elif states.sensor.time.state < '06:40' %} 6:45 AM
+        {% elif states.sensor.time.state < '06:55' %} 7:00 AM
+        {% elif states.sensor.time.state < '07:10' %} 7:15 AM
+        {% elif states.sensor.time.state < '07:30' %} 7:35 AM
+        {% elif states.sensor.time.state < '07:45' %} 7:45 AM
+        {% else %} None
+        {% endif %}
+
+    dark_sky_current_text:
+      value_template:  >-
+        {% if is_state("sensor.dark_sky_icon","clear-day") %} Clear 
+        {% elif is_state("sensor.dark_sky_icon","clear-night") %} Clear 
+        {% elif is_state("sensor.dark_sky_icon","rain") %} Rain
+        {% elif is_state("sensor.dark_sky_icon","snow") %} Snowy
+        {% elif is_state("sensor.dark_sky_icon","fog") %} Foggy
+        {% elif is_state("sensor.dark_sky_icon","sleet") %} Sleet
+        {% elif is_state("sensor.dark_sky_icon","wind") %} Windy
+        {% elif is_state("sensor.dark_sky_icon","cloudy") %} Cloudy
+        {% elif is_state("sensor.dark_sky_icon","partly-cloudy-day") %} Partly Cloudy
+        {% elif is_state("sensor.dark_sky_icon","partly-cloudy-night") %} Partly Cloudy
+        {% elif is_state("sensor.dark_sky_icon","hail") %} Hailing
+        {% elif is_state("sensor.dark_sky_icon","lightning") %} Lightning
+        {% elif is_state("sensor.dark_sky_icon","thunderstorm") %} Thunderstorm
+        {% endif %}
+- platform: time_date
+  display_options:
+    - 'time'
+    - 'date'
+# Weather prediction
+#- platform: yr
+#Dark Sky
+- platform: darksky
+  api_key: !secret darksky_api
+  name: Dark Sky
+  forecast:
+    - 0
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+  monitored_conditions:
+    - icon
+    - summary
+    - nearest_storm_distance
+    - nearest_storm_bearing
+    - humidity
+    - temperature
+    - temperature_high
+    - temperature_low
+    - apparent_temperature
+    - apparent_temperature_high
+    - apparent_temperature_low
+    - wind_speed
+    - wind_bearing
+    - precip_type
+    - precip_probability
+    - precip_accumulation
+    - precip_intensity
+    - precip_intensity_max
+    - uv_index
+    - daily_summary
+    - pressure
+    - visibility
+  scan_interval:
+    minutes: 5

@@ -1,0 +1,97 @@
+climate.floor_heat: {}
+device_tracker.life360_michael:
+  friendly_name: Michael
+sensor.michael_location:
+  lcase: michael
+  receiver: michelle_html5
+sensor.michael_status:
+  lcase: michael
+  receiver: michelle
+device_tracker.life360_michelle:
+  friendly_name: Michelle
+sensor.michelle_location:
+  lcase: michelle
+  receiver: michael_html5
+sensor.michelle_status:
+  lcase: michelle
+  receiver: michael
+sensor.thermostat_humidity:
+  friendly_name: Inside Humidity
+sensor.thermostat_temperature:
+  friendly_name: Inside Temp
+sensor.upstairs_temperature:
+  friendly_name: Upstairs Temp
+binary_sensor.thermostat_occupancy:
+  friendly_name: Thermostat Occupancy
+binary_sensor.upstairs_occupancy:
+  friendly_name: Upstairs Occupancy
+sensor.family_room_temperature:
+  friendly_name: Family Temp
+binary_sensor.family_room_occupancy:
+  friendly_name: Family Occupancy
+sensor.office_temperature:
+  friendly_name: Office Temp
+switch.1718240084f3eb653f81:
+  friendly_name: Warmer
+input_boolean.michelle_home:
+  receiver: michael_html5
+  self: michelle_html5
+input_boolean.michael_home:
+  receiver: michelle_html5
+  self: michael_html5
+light.dc4f22e392f1_192_168_0_25:
+  friendly_name: Table 1
+switch.kitchen_switch:
+  icon: mdi:ceiling-light
+switch.fridge_light:
+  icon: mdi:fridge-outline
+light.undercounter_lights:
+  icon: mdi:track-light
+light.backyard_cans:
+  icon: mdi:coach-lamp
+light.backlight:
+  icon: mdi:lightbulb-on-outline
+light.front_light:
+  icon: mdi:track-light
+switch.porch_chandelier:
+  icon: bha:chandelier
+switch.porch_lights:
+  icon: mdi:outdoor-lamp
+switch.curio:
+  icon: mdi:track-light
+switch.sofa_light:
+  icon: mdi:ceiling-light
+switch.craft_light:
+  icon: mdi:floor-lamp-dual
+switch.entry_light:
+  icon: mdi:shoe-print
+switch.family_room:
+  icon: mdi:fan
+switch.1000380d3e:
+  icon: mdi:fireplace
+switch.salt_lamp:
+  icon: mdi:lava-lamp
+light.chandelier:
+  icon: bha:chandelier
+light.can_lights:
+  icon: mdi:car-parking-lights
+device_tracker.michael_g7:
+  lcase: michael
+device_tracker.g7_thinq:
+  lcase: michelle
+switch.family_fan:
+  icon: bha:ceiling-fan-light
+switch.stereo_speakers:
+  icon: mdi:speaker-wireless
+light.foyer:
+  icon: bha:ceiling-lamp
+light.table_1:
+  icon: bha:table-lamp-variant
+light.table_2:
+  icon: bha:table-lamp-variant
+sensor.space_heater_sensor:
+  icon: mdi:fire
+switch.space_heater:
+  icon: mdi:radiator
+switch.kitchen_light:
+  icon: bha:ceiling-lamp-plafond
