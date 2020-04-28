@@ -1,0 +1,287 @@
+name: Main
+title: Home
+path: main
+icon: 'mdi:home'
+cards:
+  - type: 'custom:clock-card'
+    style: |
+      ha-card {
+        font-family: var(--primary-font-family);
+      }
+  - cards:
+      - name: Kitchen
+        template: header
+        type: 'custom:button-card'
+      - cards:
+          - entity: switch.kitchen_light
+            template: light_button
+            type: 'custom:button-card'
+          - entity: switch.fridge_light
+            template: light_button
+            type: 'custom:button-card'
+          - entity: light.undercounter_lights
+            name: Undercounter
+            template: light_button
+            type: 'custom:button-card'
+        type: horizontal-stack
+    style:
+      .: |
+        ha-card {
+          --ha-card-box-shadow: none;
+          background-color: transparent;
+          border-radius: none;
+        }
+    type: 'custom:vertical-stack-in-card'
+  - cards:
+    - entity: cover.garage_door_2
+      template: garage_button
+      type: 'custom:button-card'
+    - entity: binary_sensor.washer
+      template: sensor_button
+      type: 'custom:button-card'
+    - entity: binary_sensor.dryer_sensor
+      template: sensor_button
+      type: 'custom:button-card'
+    type: horizontal-stack
+  - cards:
+      - cards:
+          - name: Kitchen
+            template: header
+            type: 'custom:button-card'
+          - cards:
+              - entity: switch.kitchen_light
+                template: light_button
+                type: 'custom:button-card'
+              - entity: switch.fridge_light
+                template: light_button
+                type: 'custom:button-card'
+              - entity: light.undercounter_lights
+                name: Undercounter
+                template: light_button
+                type: 'custom:button-card'
+            type: horizontal-stack
+        type: vertical-stack
+      - cards:
+          - name: Morning Room
+            template: header
+            type: 'custom:button-card'
+          - cards:
+              - entity: light.chandelier
+                template: light_button
+                type: 'custom:button-card'
+              - entity: light.can_lights
+                template: light_button
+                type: 'custom:button-card'
+              - entity: switch.stereo_speakers
+                template: light_button
+                type: 'custom:button-card'
+            type: horizontal-stack
+        type: vertical-stack
+      - cards:
+          - name: Family Room
+            template: header
+            type: 'custom:button-card'
+          - cards:
+              - entity: switch.entry_light
+                template: light_button
+                type: 'custom:button-card'
+              - entity: switch.family_fan
+                template: light_button
+                type: 'custom:button-card'
+              - entity: switch.1000380d3e
+                template: light_button
+                type: 'custom:button-card'
+              - entity: switch.salt_lamp
+                template: light_button
+                type: 'custom:button-card'
+            type: horizontal-stack
+        type: vertical-stack
+      - cards:
+          - name: Craft Room
+            template: header
+            type: 'custom:button-card'
+          - cards:
+              - entity: switch.craft_light
+                template: light_button
+                type: 'custom:button-card'
+              - entity: switch.sofa_light
+                template: light_button
+                type: 'custom:button-card'
+              - entity: switch.curio
+                template: light_button
+                type: 'custom:button-card'
+            type: horizontal-stack
+        type: vertical-stack
+      - cards:
+          - name: Front Porch
+            template: header
+            type: 'custom:button-card'
+          - cards:
+              - entity: switch.porch_chandelier
+                template: light_button
+                type: 'custom:button-card'
+              - entity: switch.porch_lights
+                template: light_button
+                type: 'custom:button-card'
+              - entity: light.foyer
+                template: light_button
+                type: 'custom:button-card'
+            type: horizontal-stack
+        type: vertical-stack
+      - cards:
+          - name: Bedroom
+            template: header
+            type: 'custom:button-card'
+          - cards:
+              - entity: light.table_1
+                template: light_button
+                type: 'custom:button-card'
+              - entity: light.table_2
+                template: light_button
+                type: 'custom:button-card'
+              - entity: switch.space_heater
+                template: light_button
+                type: 'custom:button-card'
+            type: horizontal-stack
+        type: vertical-stack
+      - cards:
+          - name: Backyard
+            template: header
+            type: 'custom:button-card'
+          - cards:
+              - entity: light.backyard_cans
+                template: light_button
+                type: 'custom:button-card'
+              - entity: light.backlight
+                template: light_button
+                type: 'custom:button-card'
+            type: horizontal-stack
+        type: vertical-stack
+    type: vertical-stack
+  - !include /config/lovelace/cards/trackers.yaml
+  - entities:
+      - customIsOffColor: var(--paper-item-icon-active-color)
+        customIsOffSpdColor: var(--light-primary-color)
+        customIsOnHiColor: var(--paper-item-icon-active-color)
+        customIsOnLowColor: var(--paper-item-icon-active-color)
+        customIsOnMedColor: var(--paper-item-icon-active-color)
+        customTheme: false
+        entity: fan.office_fan
+        name: Office Fan
+        type: 'custom:fan-control-entity-row'
+    show_header_toggle: false
+    title: Fans
+    type: entities
+  - !include /config/lovelace/cards/weather.yaml
+  - animate: true
+    decimals: 1
+    entities:
+      - entity: sensor.thermostat_temperature
+        name: Craft Room
+      - entity: sensor.office_temperature
+        name: Office
+      - entity: sensor.family_room_temperature
+        name: Family Room
+      - entity: sensor.upstairs_temperature
+        name: Upstairs
+        show_indicator: true
+    height: 200
+    line_color:
+      - var(--graph-line-1)
+      - var(--graph-line-2)
+      - var(--graph-line-3)
+      - var(--graph-line-4)
+    line_width: 2
+    name: Inside Temperatures
+    points_per_hour: 1
+    show:
+      icon: false
+    type: 'custom:mini-graph-card'
+  - entities:
+      - entity: cover.garage_door_2
+        name: Garage Door
+        secondary_info: '[[ cover.garage_door_2.state ]]'
+        type: 'custom:secondaryinfo-entity-row'
+    show_header_toggle: false
+    title: Garage
+    type: entities
+  - entities:
+      - entity: fan.office_fan
+      - entity: fan.master_fan
+      - entity: fan.bedroom_fan
+      - entity: fan.nursery_fan
+    show_header_toggle: false
+    title: House Fans
+    type: entities
+  - cards:
+      - animate: true
+        decimals: 0
+        entities:
+          - entity: sensor.energy_usage
+        line_color: green
+        line_width: 2
+        name: Energy Usage
+        points_per_hour: 10
+        show:
+          icon: false
+          labels: true
+          points: false
+        type: 'custom:mini-graph-card'
+      - entities:
+          - entity: sensor.daily_usage
+          - entity: sensor.weekly_usage
+          - entity: sensor.monthly_usage
+          - entity: sensor.yearly_usage
+        show_icon: false
+        show_name: true
+        show_state: true
+        type: glance
+    type: 'custom:vertical-stack-in-card'
+  - !include /config/lovelace/cards/thermostat.yaml
+  - entities:
+      - entity: input_boolean.michael_home
+      - entity: input_boolean.michelle_home
+      - entity: input_boolean.kids_guests
+      - entity: input_boolean.home_occupied
+    show_header_toggle: false
+    title: Home Occupancy
+    type: entities
+  - !include /config/lovelace/cards/calendar.yaml
+  - camera_view: live
+    entity: camera.blink_front_door
+    name: Front Door
+    type: picture-entity
+  - entities:
+      - entity: binary_sensor.wyze_kitchen_sensor
+      - entity: binary_sensor.wyze_backdoor_sensor
+    title: Motion and Contact Sensors
+    type: glance
+  - cards:
+      - entities:
+          - entity: light.table_1
+            icon: 'mdi:lamp'
+            showColorPicker: true
+            type: 'custom:light-entity-row'
+        type: entities
+      - entities:
+          - entity: light.table_2
+            icon: 'mdi:lamp'
+            showColorPicker: true
+            type: 'custom:light-entity-row'
+        type: entities
+    title: Bedroom
+    type: horizontal-stack
+  - cards:
+      - entity: alarm_control_panel.alexa_guard_82588
+        name: Alexa Guard
+        states:
+          - arm_home
+          - arm_away
+        type: alarm-panel
+      - entity: alarm_control_panel.blink_home
+        name: Blink Home
+        states:
+          - arm_home
+          - arm_away
+        type: alarm-panel
+    type: 'custom:vertical-stack-in-card'

@@ -1,0 +1,79 @@
+name: Mobile
+path: mobile
+icon: 'mdi:cellphone-android'
+cards:
+  - color_type: icon
+    name: Hoffdad's House
+    size: 10%
+    styles:
+      card:
+        - height: 80px
+        - border-radius: 20px
+      name:
+        - font-size: 25px
+    type: 'custom:button-card'
+  - card:
+      entities:
+        - sensor.next_bus
+      type: entities
+    conditions:
+      - entity: sensor.next_bus
+        state_not: None
+    type: conditional
+  - cards:
+      - card_type: icon
+        icon: 'mdi:silverware-fork-knife'
+        name: Kitchen
+        size: 100%
+        styles:
+          card:
+            - border-radius: 20px
+            - font-size: 18px
+        tap_action:
+          action: navigate
+          navigation_path: /lovelace/kitchen
+        type: 'custom:button-card'
+      - card_type: icon
+        icon: 'mdi:human-male-female'
+        name: Family Room
+        size: 100%
+        styles:
+          card:
+            - border-radius: 20px
+            - font-size: 18px
+        tap_action:
+          action: navigate
+          navigation_path: /lovelace/family
+        type: 'custom:button-card'
+    type: horizontal-stack
+  - cards:
+      - card_type: icon
+        icon: 'mdi:hotel'
+        name: Bedroom
+        size: 100%
+        styles:
+          card:
+            - border-radius: 20px
+            - font-size: 18px
+        tap_action:
+          action: navigate
+          navigation_path: /lovelace/bedroom
+        type: 'custom:button-card'
+      - card_type: icon
+        icon: 'mdi:weather-sunset'
+        name: Morning Room
+        size: 100%
+        styles:
+          card:
+            - border-radius: 20px
+            - font-size: 18px
+        tap_action:
+          action: navigate
+          navigation_path: /lovelace/morning
+        type: 'custom:button-card'
+    type: horizontal-stack
+  - animate: true
+    entities:
+      - sensor.my_tp_switch_watts
+    line_color: green
+    type: 'custom:mini-graph-card'

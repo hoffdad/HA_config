@@ -1,0 +1,20 @@
+title: Panel
+icon: 'mdi:home-assistant'
+panel: true
+cards:
+  - cards:
+      - type: 'custom:clock-card'
+      - !include /config/lovelace/cards/trackers.yaml
+      - !include /config/lovelace/cards/thermostat.yaml
+      - break
+      - !include /config/lovelace/cards/floorplan.yaml
+      - break
+      - !include /config/lovelace/cards/weather.yaml
+    column_width:
+      - 25%
+      - 50%
+      - 25%
+    layout: vertical
+    max_columns: 3
+    min_columns: 3
+    type: 'custom:layout-card'

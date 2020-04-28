@@ -1,0 +1,33 @@
+entities:
+  - entity: calendar.family_calendar
+    titleColor: '#a50000'
+    timeColor: '#a50000'
+  - entity: calendar.michael_s_calendar
+    titlecolor: '#026440'
+    timeColor: '#026440'
+  - entity: calendar.101852_students_mentorschools_org
+    titlecolor: '#ff8c00'
+    timeColor: '#ff8c00'
+  - entity: calendar.michelle_s_calendar
+    titlecolor: '#800080'
+    timeColor: '#800080'
+  - entity: calendar.kiera_s_calendar
+    titlecolor: '#ff69b4'
+    timeColor: '#ff69b4'
+  - entity: calendar.holidays_in_united_states
+    titlecolor: '#008080'
+    timeColor: '#008080'
+  - entity: calendar.contacts
+locationIconColor: darkred
+showColors: true
+showProgressBar: false
+title: Family Calendar
+#timeColor: 'var(--secondary-text-color)'
+noEventsForTodayText: true
+titleSize: 105
+type: 'custom:atomic-calendar'
+style: |
+  ha-card {
+    font-family: var(--primary-font-family);
+    padding-bottom: '0px'
+  }

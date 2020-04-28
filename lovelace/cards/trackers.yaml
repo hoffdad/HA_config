@@ -1,0 +1,176 @@
+cards:
+  - card:
+      cards:
+        - elements:
+            - entity: '${''device_tracker.life360_'' + vars[0]}'
+              image: >-
+                "${states['sensor.' + vars[0]
+                +'_status'].attributes['entity_picture']}"
+              style:
+                left: 50%
+                top: 50%
+                width: 100%
+              type: image
+            - entity: '${''sensor.'' + vars[0] +''_battery''}'
+              style:
+                '--paper-item-icon-color': >-
+                  ${'hsl(' + (states['sensor.' + vars[0]
+                  +'_battery'].state*1.1 )*((states['sensor.' + vars[0]
+                  +'_battery'].state/100)) + ',90%,40%)'}
+                left: 4.5%
+                top: 3.5%
+                transform: 'scale(1.2,1.2)'
+              type: state-icon
+            - entity: '${''sensor.'' + vars[0] +''_wifi''}'
+              style:
+                left: 80.5%
+                top: 3.5%
+                transform: 'scale(1.2,1.2)'
+              type: state-icon
+          image: '${''/local/images/blank_frame.png''}'
+          type: 'custom:hui-picture-elements-card'
+        - color_type: icon
+          entity: '${''sensor.'' + vars[0] +''_status''}'
+          show_icon: false
+          show_name: false
+          show_state: true
+          styles:
+            card:
+              - height: '${states[''sensor.'' + vars[0] +''_height''].state}'
+            state:
+              - padding-top: '${vars[2]}'
+              - padding-left: 14px
+              - padding-right: 14px
+              - white-space: '${vars[1]}'
+              - text-overflow: '${vars[1]}'
+              - word-break: break-word
+              - font-family: var(--primary-font-family)
+          tap_action:
+            action: url
+            url_path: '${states[''sensor.'' + vars[0]].attributes[''map_link'']}'
+          type: 'custom:button-card'
+        - card:
+            color_type: icon
+            entity: '${''sensor.'' + vars[0] +''_at_loc_since''}'
+            show_icon: false
+            show_name: false
+            show_state: true
+            styles:
+              card:
+                - height: 30px
+              state:
+                - font-family: var(--primary-font-family)
+                - padding-bottom: 14px
+                - font-size: 12px
+            tap_action:
+              action: url
+              url_path: '${states[''sensor.'' + vars[0]].attributes[''map_link'']}'
+            type: 'custom:button-card'
+          conditions:
+            - entity: '${''binary_sensor.'' + vars[0] + ''_moving''}'
+              state: 'off'
+          type: conditional
+      type: 'custom:vertical-stack-in-card'
+    entities:
+      - '${''device_tracker.life360_'' + vars[0]}'
+    type: 'custom:config-template-card'
+    variables:
+      - '''michael'''
+      - >-
+        {if (states['sensor.' + vars[0] +'_height'].state ===
+        '70px')'unset';else 'nowrap'}
+      - >-
+        {if (states['sensor.' + vars[0] +'_height'].state ===
+        '70px')'4px';else '14px'}
+    entities:
+      - device_tracker.life360_michael
+      - sensor.michael_battery
+      - sensor.michael_wifi
+      - sensor.michael_height
+  - card:
+      cards:
+        - elements:
+            - entity: '${''device_tracker.life360_'' + vars[0]}'
+              image: >-
+                "${states['sensor.' + vars[0]
+                +'_status'].attributes['entity_picture']}"
+              style:
+                left: 50%
+                top: 50%
+                width: 100%
+              type: image
+            - entity: '${''sensor.'' + vars[0] +''_battery''}'
+              style:
+                '--paper-item-icon-color': >-
+                  ${'hsl(' + (states['sensor.' + vars[0]
+                  +'_battery'].state*1.1 )*((states['sensor.' + vars[0]
+                  +'_battery'].state/100)) + ',90%,40%)'}
+                left: 4.0%
+                top: 3.0%
+                transform: 'scale(1.2,1.2)'
+              type: state-icon
+            - entity: '${''sensor.'' + vars[0] +''_wifi''}'
+              style:
+                left: 80.5%
+                top: 3.5%
+                transform: 'scale(1.2,1.2)'
+              type: state-icon
+          image: '${''/local/images/blank_frame.png''}'
+          type: 'custom:hui-picture-elements-card'
+        - color_type: icon
+          entity: '${''sensor.'' + vars[0] +''_status''}'
+          show_icon: false
+          show_name: false
+          show_state: true
+          styles:
+            card:
+              - height: '${states[''sensor.'' + vars[0] +''_height''].state}'
+            state:
+              - padding-top: '${vars[2]}'
+              - padding-left: 14px
+              - padding-right: 14px
+              - white-space: '${vars[1]}'
+              - text-overflow: '${vars[1]}'
+              - word-break: break-word
+              - font-family: var(--primary-font-family)
+          tap_action:
+            action: url
+            url_path: '${states[''sensor.'' + vars[0]].attributes[''map_link'']}'
+          type: 'custom:button-card'
+        - card:
+            color_type: icon
+            entity: '${''sensor.'' + vars[0] +''_at_loc_since''}'
+            show_icon: false
+            show_name: false
+            show_state: true
+            styles:
+              card:
+                - height: 30px
+              state:
+                - padding-bottom: 14px
+                - font-size: 12px
+                - font-family: var(--primary-font-family)
+            tap_action:
+              action: url
+              url_path: '${states[''sensor.'' + vars[0]].attributes[''map_link'']}'
+            type: 'custom:button-card'
+          conditions:
+            - entity: '${''binary_sensor.'' + vars[0] + ''_moving''}'
+              state: 'off'
+          type: conditional
+      type: 'custom:vertical-stack-in-card'
+    type: 'custom:config-template-card'
+    variables:
+      - '''michelle'''
+      - >-
+        {if (states['sensor.' + vars[0] +'_height'].state ===
+        '70px')'unset';else 'nowrap'}
+      - >-
+        {if (states['sensor.' + vars[0] +'_height'].state ===
+        '70px')'4px';else '14px'}
+    entities:
+      - device_tracker.life360_michelle
+      - sensor.michelle_battery
+      - sensor.michelle_wifi
+      - sensor.michelle_height
+type: horizontal-stack

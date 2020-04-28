@@ -1,0 +1,135 @@
+type: 'custom:hui-picture-elements-card'
+image: /local/images/house/first_floor.png
+elements:
+  - entity: input_boolean.ui_porch_lights
+    image: /local/images/house/porch_lights.png
+    state_filter:
+      'off': opacity(0%)
+      'on': opacity(70%)
+    style:
+      left: 29.5%
+      top: 88%
+      width: 55%
+    tap_action:
+      action: toggle
+    type: image
+  - entity: input_boolean.ui_porch_chandelier
+    image: /local/images/house/porch_chandelier_light.png
+    state_filter:
+      'off': opacity(0%)
+      'on': opacity(100%)
+    style:
+      left: 33%
+      top: 92.5%
+      width: 16.5%
+    tap_action:
+      action: toggle
+    type: image
+  - entity: input_boolean.ui_craft_light
+    image: /local/images/house/craft_light.png
+    state_filter:
+      'off': opacity(0%)
+      'on': opacity(70%)
+    style:
+      left: 15.8%
+      top: 61.8%
+      width: 24.8%
+    tap_action:
+      action: toggle
+    type: image
+  - entity: input_boolean.ui_playroom_light
+    image: /local/images/house/playroom_light.png
+    state_filter:
+      'off': opacity(0%)
+      'on': opacity(80%)
+    style:
+      left: 20.7%
+      top: 42.3%
+      width: 31.8%
+    tap_action:
+      action: toggle
+    type: image
+  - entity: input_boolean.ui_garage_lights
+    image: /local/images/house/garage_lights.png
+    state_filter:
+      'off': opacity(0%)
+      'on': opacity(80%)
+    style:
+      left: 76.3%
+      top: 57%
+      width: 39.5%
+    tap_action:
+      action: toggle
+    type: image
+  - entity: input_boolean.ui_kitchen_light
+    image: /local/images/house/kitchen_light.png
+    state_filter:
+      'off': opacity(0%)
+      'on': opacity(80%)
+    style:
+      left: 44%
+      top: 51.8%
+      width: 23.8%
+    tap_action:
+      action: toggle
+    type: image
+  - entity: input_boolean.ui_fridge_light
+    image: /local/images/house/fridge_light.png
+    state_filter:
+      'off': opacity(0%)
+      'on': opacity(100%)
+    style:
+      left: 43.7%
+      top: 37.7%
+      width: 24.8%
+    tap_action:
+      action: toggle
+    type: image
+  - entity: input_boolean.ui_office_light
+    image: /local/images/house/office_light.png
+    state_filter:
+      'off': opacity(0%)
+      'on': opacity(70%)
+    style:
+      left: 45.3%
+      top: 73.5%
+      width: 22%
+    tap_action:
+      action: toggle
+    type: image
+  - entity: input_boolean.ui_foyer_light
+    image: /local/images/house/foyer_light.png
+    state_filter:
+      'off': opacity(0%)
+      'on': opacity(100%)
+    style:
+      left: 31.3%
+      top: 76.7%
+      width: 13.3%
+    tap_action:
+      action: toggle
+    type: image
+  - entity: input_boolean.ui_desk_light
+    image: /local/images/house/desk_light.png
+    state_filter:
+      'off': opacity(0%)
+      'on': opacity(100%)
+    style:
+      left: 49.8%
+      top: 73.5%
+      width: 13.3%
+    tap_action:
+      action: toggle
+    type: image
+  - entity: input_boolean.ui_playroom_light
+    image: /local/images/house/morning_room.png
+    state_filter:
+      'off': opacity(0%)
+      'on': opacity(80%)
+    style:
+      left: 42.2%
+      top: 17.5%
+      width: 28%
+    tap_action:
+      action: toggle
+    type: image

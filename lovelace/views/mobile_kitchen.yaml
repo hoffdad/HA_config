@@ -1,0 +1,84 @@
+name: Kitchen
+path: kitchen
+icon: 'mdi:silverware-fork-knife'
+cards:
+  - color_type: icon
+    name: Kitchen
+    size: 10%
+    styles:
+      card:
+        - height: 80px
+        - border-radius: 20px
+      name:
+        - color: white
+        - font-size: 25px
+    type: 'custom:button-card'
+  - cards:
+      - color_type: icon
+        entity: switch.kitchen_switch
+        icon: 'mdi:ceiling-light'
+        name: Kitchen Light
+        size: 90%
+        state:
+          - color: 'rgb(37, 178, 18)'
+            value: 'on'
+        styles:
+          card:
+            - border-radius: 20px
+          name:
+            - font-size: 15px
+        type: 'custom:button-card'
+      - color_type: icon
+        entity: switch.fridge_light
+        icon: 'mdi:fridge-outline'
+        size: 90%
+        state:
+          - color: 'rgb(37, 178, 18)'
+            value: 'on'
+        styles:
+          card:
+            - border-radius: 20px
+          name:
+            - font-size: 15px
+        type: 'custom:button-card'
+    type: horizontal-stack
+  - cards:
+      - color_type: icon
+        entity: fan.undercounter
+        icon: 'mdi:track-light'
+        name: Undercounter
+        size: 90%
+        state:
+          - color: 'rgb(37, 178, 18)'
+            value: 'on'
+        styles:
+          card:
+            - border-radius: 20px
+          name:
+            - font-size: 15px
+        type: 'custom:button-card'
+      - color_type: icon
+        entity: switch.warmer
+        icon: 'mdi:waves'
+        size: 90%
+        state:
+          - color: 'rgb(37, 178, 18)'
+            value: 'on'
+        styles:
+          card:
+            - border-radius: 20px
+          name:
+            - font-size: 15px
+        type: 'custom:button-card'
+    type: horizontal-stack
+  - card_type: icon
+    icon: 'mdi:undo-variant'
+    size: 10%
+    styles:
+      card:
+        - border-radius: 20px
+        - font-size: 18px
+    tap_action:
+      action: navigate
+      navigation_path: /lovelace/mobile
+    type: 'custom:button-card'

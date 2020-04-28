@@ -1,0 +1,148 @@
+title: New Home
+panel: true
+path: new-home
+theme: Backend-selected
+icon: 'mdi:home'
+cards:
+  - cards:
+      - template: horizontal_line
+        type: 'custom:button-card'
+      - cards:
+          - template: vertical_line
+            type: 'custom:button-card'
+          - cards:
+              - name: Kitchen
+                template: header
+                type: 'custom:button-card'
+              - cards:
+                  - color_type: blank-card
+                    type: 'custom:button-card'
+                  - entity: switch.kitchen_light
+                    template: light_button
+                    type: 'custom:button-card'
+                  - entity: switch.fridge_light
+                    template: light_button
+                    type: 'custom:button-card'
+                  - entity: light.undercounter_lights
+                    name: Undercounter
+                    template: light_button
+                    type: 'custom:button-card'
+                  - color_type: blank-card
+                    type: 'custom:button-card'
+                type: horizontal-stack
+            type: vertical-stack
+          - template: vertical_line
+            type: 'custom:button-card'
+          - cards:
+              - name: Morning Room
+                template: header
+                type: 'custom:button-card'
+              - cards:
+                  - color_type: blank-card
+                    type: 'custom:button-card'
+                  - entity: light.chandelier
+                    template: light_button
+                    type: 'custom:button-card'
+                  - entity: light.can_lights
+                    template: light_button
+                    type: 'custom:button-card'
+                  - entity: switch.stereo_speakers
+                    template: light_button
+                    type: 'custom:button-card'
+                  - color_type: blank-card
+                    type: 'custom:button-card'
+                type: horizontal-stack
+            type: vertical-stack
+          - template: vertical_line
+            type: 'custom:button-card'
+          - cards:
+              - name: Craft Room
+                template: header
+                type: 'custom:button-card'
+              - cards:
+                  - color_type: blank-card
+                    type: 'custom:button-card'
+                  - entity: switch.craft_light
+                    template: light_button
+                    type: 'custom:button-card'
+                  - entity: switch.sofa_light
+                    template: light_button
+                    type: 'custom:button-card'
+                  - entity: switch.curio
+                    template: light_button
+                    type: 'custom:button-card'
+                  - color_type: blank-card
+                    type: 'custom:button-card'
+                type: horizontal-stack
+            type: vertical-stack
+          - template: vertical_line
+            type: 'custom:button-card'
+          - cards:
+              - name: Front Porch
+                template: header
+                type: 'custom:button-card'
+              - cards:
+                  - color_type: blank-card
+                    type: 'custom:button-card'
+                  - entity: switch.porch_chandelier
+                    template: light_button
+                    type: 'custom:button-card'
+                  - entity: switch.porch_lights
+                    template: light_button
+                    type: 'custom:button-card'
+                  - entity: light.foyer
+                    template: light_button
+                    type: 'custom:button-card'
+                  - color_type: blank-card
+                    type: 'custom:button-card'
+                type: horizontal-stack
+            type: vertical-stack
+          - template: vertical_line
+            type: 'custom:button-card'
+          - cards:
+              - name: Bedroom
+                template: header
+                type: 'custom:button-card'
+              - cards:
+                  - color_type: blank-card
+                    type: 'custom:button-card'
+                  - entity: light.table_1
+                    template: light_button
+                    type: 'custom:button-card'
+                  - entity: light.table_2
+                    template: light_button
+                    type: 'custom:button-card'
+                  - entity: switch.space_heater
+                    template: light_button
+                    type: 'custom:button-card'
+                  - color_type: blank-card
+                    type: 'custom:button-card'
+                type: horizontal-stack
+            type: vertical-stack
+          - template: vertical_line
+            type: 'custom:button-card'
+        type: horizontal-stack
+      - template: horizontal_line
+        type: 'custom:button-card'
+      - cards:
+          - cards:
+              - name: Backyard
+                template: header
+                type: 'custom:button-card'
+              - cards:
+                  - color_type: blank-card
+                    type: 'custom:button-card'
+                  - entity: light.backyard_cans
+                    template: light_button
+                    type: 'custom:button-card'
+                  - entity: light.backlight
+                    template: light_button
+                    type: 'custom:button-card'
+                  - color_type: blank-card
+                    type: 'custom:button-card'
+                type: horizontal-stack
+            type: vertical-stack
+        type: horizontal-stack
+      - template: horizontal_line
+        type: 'custom:button-card'
+    type: vertical-stack

@@ -1,0 +1,300 @@
+name: Main
+title: Home
+panel: true
+path: main
+icon: 'mdi:home'
+cards:
+  - type: custom:layout-card
+    layout: vertical
+    min_columns: 4
+    max_columns: 4
+    column_width: 30%, 20%, 25%
+    cards:
+      - cards:
+          - cards:
+              - name: Kitchen
+                template: header
+                type: 'custom:button-card'
+              - cards:
+                  - entity: switch.kitchen_light
+                    template: light_button
+                    type: 'custom:button-card'
+                  - entity: switch.fridge_light
+                    template: light_button
+                    type: 'custom:button-card'
+                  - entity: light.undercounter_lights
+                    name: Undercounter
+                    template: light_button
+                    type: 'custom:button-card'
+                type: horizontal-stack
+            type: 'custom:vertical-stack-in-card'
+          - cards:
+              - name: Morning Room
+                template: header
+                type: 'custom:button-card'
+              - cards:
+                  - entity: light.chandelier
+                    template: light_button
+                    type: 'custom:button-card'
+                  - entity: light.can_lights
+                    template: light_button
+                    type: 'custom:button-card'
+                  - entity: switch.stereo_speakers
+                    template: light_button
+                    type: 'custom:button-card'
+                type: horizontal-stack
+            type: 'custom:vertical-stack-in-card'
+          - cards:
+              - name: Family Room
+                template: header
+                type: 'custom:button-card'
+              - cards:
+                  - entity: switch.entry_light
+                    template: light_button
+                    type: 'custom:button-card'
+                  - entity: switch.family_fan
+                    template: light_button
+                    type: 'custom:button-card'
+                  - entity: switch.1000380d3e
+                    template: light_button
+                    type: 'custom:button-card'
+                  - entity: switch.salt_lamp
+                    template: light_button
+                    type: 'custom:button-card'
+                type: horizontal-stack
+            type: 'custom:vertical-stack-in-card'
+          - cards:
+              - name: Living Room
+                template: header
+                type: 'custom:button-card'
+              - cards:
+                  - entity: light.foyer
+                    template: light_button
+                    type: 'custom:button-card'
+                  - entity: switch.craft_light
+                    template: light_button
+                    type: 'custom:button-card'
+                  - entity: switch.sofa_light
+                    template: light_button
+                    type: 'custom:button-card'
+                  - entity: switch.curio
+                    template: light_button
+                    type: 'custom:button-card'
+                type: horizontal-stack
+            type: 'custom:vertical-stack-in-card'
+          - cards:
+              - name: Bedroom
+                template: header
+                type: 'custom:button-card'
+              - cards:
+                  - entity: light.table_1
+                    template: light_button
+                    type: 'custom:button-card'
+                  - entity: light.table_2
+                    template: light_button
+                    type: 'custom:button-card'
+                  - entity: switch.space_heater
+                    template: light_button
+                    type: 'custom:button-card'
+                type: horizontal-stack
+            type: 'custom:vertical-stack-in-card'
+          - cards:
+              - name: Outdoor
+                template: header
+                type: 'custom:button-card'
+              - cards:
+                  - entity: switch.porch_chandelier
+                    template: light_button
+                    type: 'custom:button-card'
+                  - entity: switch.porch_lights
+                    template: light_button
+                    type: 'custom:button-card'
+                  - entity: light.backyard_cans
+                    template: light_button
+                    type: 'custom:button-card'
+                  - entity: light.backlight
+                    template: light_button
+                    type: 'custom:button-card'
+                type: horizontal-stack
+            type: 'custom:vertical-stack-in-card'
+        type: vertical-stack
+      - break
+      # Column 2
+      - cards:
+          - !include /config/lovelace/cards/trackers.yaml
+          - !include /config/lovelace/cards/thermostat.yaml
+          - animate: true
+            decimals: 1
+            entities:
+              - entity: sensor.thermostat_temperature
+                name: Craft Room
+              - entity: sensor.office_temperature
+                name: Office
+              - entity: sensor.family_room_temperature
+                name: Family Room
+              - entity: sensor.upstairs_temperature
+                name: Upstairs
+                show_indicator: true
+            height: 130
+            line_color:
+              - var(--graph-line-1)
+              - var(--graph-line-2)
+              - var(--graph-line-3)
+              - var(--graph-line-4)
+            line_width: 2
+            name: Inside Temperatures
+            points_per_hour: 1
+            show:
+              icon: false
+            type: 'custom:mini-graph-card'
+            style: |
+              ha-card {
+                font-family: var(--primary-font-family);
+                padding-bottom: '0px'
+              }
+
+        type: vertical-stack
+      - cards:
+          - name: Motion and Contact Sensors
+            template: header
+            type: 'custom:button-card'
+          - entities:
+              - entity: binary_sensor.wyze_kitchen_sensor
+              - entity: binary_sensor.wyze_backdoor_sensor
+            type: glance
+            style: |
+              ha-card {
+                font-family: var(--primary-font-family);
+                padding-bottom: '0px'
+              }
+        type: 'custom:vertical-stack-in-card'
+      - break
+      # Column 3
+      - cards:
+          - !include /config/lovelace/cards/weather.yaml
+
+          - animate: true
+            decimals: 0
+            entities:
+              - entity: sensor.energy_usage
+            line_color: var(--paper-item-icon-active-color)
+            line_width: 2
+            height: 100
+            name: Energy Usage
+            points_per_hour: 10
+            show:
+              icon: false
+              labels: true
+              points: false
+            type: 'custom:mini-graph-card'
+            style: |
+              ha-card {
+                font-family: var(--primary-font-family);
+                padding-bottom: '0px'
+              }
+          - cards:
+              - animate: true
+                decimals: 1
+                entities:
+                  - entity: sensor.daily_energy_usage_max
+                    name: Daily Energy Usage
+                    show_indicator: true
+                height: 90
+                line_width: 2
+                line_color: var(--paper-item-icon-active-color)
+                name: Daily Energy Use
+                hours_to_show: 168
+                group_by: date
+                show:
+                  graph: bar
+                  icon: false
+                type: 'custom:mini-graph-card'
+                style: |
+                  ha-card {
+                    font-family: var(--primary-font-family);
+                    padding-bottom: '0px'
+                  }
+              - entities:
+                  - entity: sensor.weekly_usage
+                  - entity: sensor.monthly_usage
+                  - entity: sensor.yearly_usage
+                show_icon: false
+                show_name: true
+                show_state: true
+                type: glance
+                height: 25
+                style: |
+                  ha-card {
+                    font-family: var(--primary-font-family);
+                    padding-bottom: '0px'
+                  }
+            type: 'custom:vertical-stack-in-card'
+          - cards:
+              #- name: Garage
+              #  template: header
+              #  type: 'custom:button-card'
+              - entities:
+                  - entity: cover.garage_door
+                    secondary_info: '[[ cover.garage_door.state ]]'
+                    type: 'custom:secondaryinfo-entity-row'
+                show_header_toggle: false
+                type: entities
+                style: |
+                  ha-card {
+                    font-family: var(--primary-font-family);
+                    padding-bottom: '0px'
+                  }
+            type: 'custom:vertical-stack-in-card'
+
+
+        type: vertical-stack
+      - break
+      # Column 4
+      - cards:
+          - cards:
+              - name: Family Calendar
+                template: sunkheader
+                type: 'custom:button-card'
+              - !include /config/lovelace/cards/calendar.yaml
+            type: 'custom:vertical-stack-in-card'
+          - cards:
+              - name: Home Occupany
+                template: header
+                type: 'custom:button-card'
+              - entities:
+                  - entity: input_boolean.michael_home
+                  - entity: input_boolean.michelle_home
+                  - entity: input_boolean.kids_guests
+                  - entity: input_boolean.home_occupied
+                  - type: divider
+                  - entity: alarm_control_panel.alexa_guard_82588
+                  - entity: alarm_control_panel.blink_home
+                show_header_toggle: false
+                type: entities
+                style: |
+                  ha-card {
+                    font-family: var(--primary-font-family);
+                    padding-bottom: '0px'
+                  }
+              #- !include /config/lovelace/cards/withings.yaml
+            type: 'custom:vertical-stack-in-card'
+        type: vertical-stack
+
+      
+      #- type: 'custom:button-card'
+      #  entity: sensor.time
+      #  template: time_date
+
+
+
+      
+
+
+      
+      
+
+      #- camera_view: live
+      #  entity: camera.blink_front_door
+      #  name: Front Door
+      #  type: picture-entity
+      

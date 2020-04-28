@@ -1,0 +1,243 @@
+header:
+  styles:
+    card:
+      - padding: 10px 15px 5px 15px
+      - style: ''
+      - box-shadow: none
+    label:
+      - color: var(--paper-item-icon-active-color)
+      - justify-self: start
+    name:
+      - justify-self: center
+      - font-family: var(--primary-font-family)
+      - font-size: 20px
+
+sunkheader:
+  styles:
+    card:
+      - padding: 10px 15px 5px 15px
+      - style: ''
+      - box-shadow: none
+    label:
+      - color: var(--paper-item-icon-active-color)
+      - justify-self: start
+    name:
+      - justify-self: center
+      - font-family: var(--primary-font-family)
+      - font-size: 20px
+
+time_date:
+  custom_fields:
+    time: >
+      [[[ return states['sensor.time'].state ]]]
+  hold_action:
+    action: more-info
+  layout: icon_state
+  show_icon: true
+  show_label: false
+  show_name: false
+  styles:
+    card:
+      - background-color: var(--primary-background-color)
+      - width: 200px
+      - height: 100px
+      - border-radius: 15px
+      - margin: 5px 5px 5px 5px
+      - padding: 0px 0px
+      - box-shadow: none
+    state:
+      - justify-self: center
+    custom_fields:
+      time:
+        - padding-left: 15%
+        - padding-bottom: '-15px'
+        - align-self: middle
+        - justify-self: start
+        - text-transform: uppercase
+        - font-size: 45px
+    grid:
+      - grid-template-areas: '"i time" "n n" "cpu cpu" "ram ram" "sd sd"'
+      - grid-template-columns: 60px 40px
+      - grid-template-rows: 1fr min-content min-content min-content min-content
+
+horizontal_line:
+  color_type: blank-card
+  styles:
+    card:
+      - height: 2px
+      - background-color: var(--paper-item-icon-active-color)
+
+tracker_button:
+  custom_fields:
+    since: >
+      [[[ var bri = Math.round(entity.attributes.brightness / 2.55);  if
+      (bri > 0) return (bri ? (bri+"%") : ''); else return `${entity.state}` ]]]
+  hold_action:
+    action: more-info
+  layout: icon_label
+  show_entity_picture: true
+  show_label: false
+  show_name: false
+  show_state: true
+  styles:
+    card:
+      - height: 250px
+      - padding: 0px 0px
+    state:
+      - font-size: 18px
+      - font-family: var(--primary-font-family)
+    custom_fields:
+      since:
+        - padding-top: '5px'
+        - padding-bottom: '15px'
+        - align-self: middle
+        - text-transform: uppercase
+        - font-size: 13px
+        - font-family: var(--primary-font-family)
+    grid:
+      - grid-template-areas: '"i" "s" "since"'
+      - grid-template-columns: 1fr
+      - grid-template-rows: 1fr min-content min-content min-content min-content
+      
+
+light_button:
+  custom_fields:
+    temp: >
+      [[[ var bri = Math.round(entity.attributes.brightness / 2.55);  if
+      (bri > 0) return (bri ? (bri+"%") : ''); else return `${entity.state}` ]]]
+  hold_action:
+    action: more-info
+  layout: icon_label
+  show_label: false
+  show_name: true
+  styles:
+    card:
+      - height: 120px
+      - padding-bottom: 15px
+    custom_fields:
+      temp:
+        - padding-left: 15%
+        - padding-bottom: '-15px'
+        - align-self: middle
+        - justify-self: start
+        - text-transform: uppercase
+        - font-size: 13px
+        - font-family: var(--primary-font-family)
+    grid:
+      - grid-template-areas: '". i temp ." "n n n n"'
+      - grid-template-columns: 1fr 60px 30px 1fr
+      - grid-template-rows: 1fr min-content min-content min-content min-content
+    icon:
+      - width: 55px
+      - height: 55px
+    name:
+      - font-size: 13px
+      - margin-bottom: 8%
+      - font-family: var(--primary-font-family)
+
+
+sensor_button:
+  custom_fields:
+    temp: >
+      [[[ var bri = Math.round(entity.attributes.brightness / 2.55);  if
+      (bri > 0) return (bri ? (bri+"%") : ''); else return `${entity.state}` ]]]
+  tap_action:
+    action: more-info
+  hold_action:
+    action: more-info
+  layout: icon_label
+  show_label: false
+  show_name: true
+  show_last_changed: false
+  state:
+    - styles:
+        icon:
+          - color: '#89d78a'
+      value: 'on'
+  styles:
+    card:
+      - height: 120px
+      - padding-bottom: 15px
+    custom_fields:
+      temp:
+        - padding-left: 15%
+        - padding-bottom: '-15px'
+        - align-self: middle
+        - justify-self: start
+        - text-transform: uppercase
+        - font-size: 13px
+        - font-family: var(--primary-font-family)
+    grid:
+      - grid-template-areas: '". i temp ." ". i l ." "n n n n"'
+      - grid-template-columns: 1fr 60px 30px 1fr
+      - grid-template-rows: 1fr min-content min-content min-content min-content
+    icon:
+      - width: 55px
+      - height: 55px
+    label:
+      - font-size: 10px
+      - font-family: var(--primary-font-family)
+      - padding-left: 15%
+      - padding-bottom: '-15px'
+      - align-self: middle
+      - justify-self: start
+      - text-transform: uppercase
+    name:
+      - font-size: 13px
+      - margin-bottom: 8%
+      - font-family: var(--primary-font-family)
+
+
+garage_button:
+  custom_fields:
+    temp: >
+      [[[ var bri = Math.round(entity.attributes.brightness / 2.55);  if
+      (bri > 0) return (bri ? (bri+"%") : ''); else return `${entity.state}` ]]]
+  hold_action:
+    action: more-info
+  layout: icon_label
+  icon: >
+      [[[ if (entity.state = 'closed') return 'mdi:garage'; else return `mdi:garage-open` ]]]
+  lock:
+    enabled: true
+  show_label: false
+  show_name: true
+  state:
+    - styles:
+        icon:
+          - color: '#89d78a'
+      value: 'open'
+  styles:
+    card:
+      - height: 120px
+      - padding-bottom: 15px
+    custom_fields:
+      temp:
+        - padding-left: 15%
+        - padding-bottom: '-15px'
+        - align-self: middle
+        - justify-self: start
+        - text-transform: uppercase
+        - font-size: 13px
+        - font-family: var(--primary-font-family)
+    grid:
+      - grid-template-areas: '". i temp ." "n n n n"'
+      - grid-template-columns: 1fr 60px 30px 1fr
+      - grid-template-rows: 1fr min-content min-content min-content min-content
+    icon:
+      - width: 55px
+      - height: 55px
+    name:
+      - font-size: 13px
+      - margin-bottom: 8%
+      - font-family: var(--primary-font-family)
+      
+vertical_line:
+  color_type: blank-card
+  styles:
+    card:
+      - width: 2px
+      - height: 112%
+      - background-color: var(--paper-item-icon-active-color)
+      - position: relative
+      - top: '-10px'

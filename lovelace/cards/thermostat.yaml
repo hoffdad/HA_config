@@ -1,0 +1,42 @@
+cards:
+  - cards:
+      - entity: climate.thermostat
+        theme: default
+        type: thermostat
+        style: |
+          ha-card {
+            font-family: var(--primary-font-family);
+            padding-bottom: '0px'
+          }
+        #- color_type: icon
+        #  entity: sensor.ecobee_mode
+        #  styles:
+        #  card:
+        #    - height: 25px
+        #  show_icon: false
+        #  show_name: false
+        #  show_state: true
+        #  tap_action:
+        #    action: url
+        #    url_path: 'http://ecobee.app.link'
+        #  type: 'custom:button-card'
+        #  style: |
+        #    ha-card {
+        #      font-family: var(--primary-font-family);
+        #      padding-bottom: '0px'
+        #    }
+    type: 'custom:vertical-stack-in-card'
+  - break
+  - cards:
+      - entity: sensor.washer_sensor
+        template: sensor_button
+        type: 'custom:button-card'
+      - entity: binary_sensor.dryer_sensor
+        template: sensor_button
+        type: 'custom:button-card'
+    type: vertical-stack
+type: custom:layout-card
+layout: vertical
+min_columns: 2
+max_columns: 2
+

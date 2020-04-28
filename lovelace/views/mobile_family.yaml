@@ -1,0 +1,83 @@
+name: Family Room
+path: family
+icon: 'mdi:human-male-female'
+cards:
+  - color_type: icon
+    name: Family Room
+    size: 10%
+    styles:
+      card:
+        - height: 80px
+        - border-radius: 20px
+      name:
+        - color: white
+        - font-size: 25px
+    type: 'custom:button-card'
+  - cards:
+      - color_type: icon
+        entity: switch.entry_light
+        icon: 'mdi:shoe-print'
+        size: 90%
+        state:
+          - color: 'rgb(28, 128, 199)'
+            value: 'on'
+        styles:
+          card:
+            - border-radius: 20px
+          name:
+            - font-size: 15px
+        type: 'custom:button-card'
+      - color_type: icon
+        entity: switch.family_fan
+        icon: 'mdi:fan'
+        size: 90%
+        state:
+          - color: 'rgb(28, 128, 199)'
+            spin: true
+            value: 'on'
+        styles:
+          card:
+            - border-radius: 20px
+          name:
+            - font-size: 15px
+        type: 'custom:button-card'
+    type: horizontal-stack
+  - cards:
+      - color_type: icon
+        entity: switch.1000380d3e
+        icon: 'mdi:fire'
+        size: 90%
+        state:
+          - color: 'rgb(28, 128, 199)'
+            value: 'on'
+        styles:
+          card:
+            - border-radius: 20px
+          name:
+            - font-size: 15px
+        type: 'custom:button-card'
+      - color_type: icon
+        entity: switch.salt_lamp
+        icon: 'mdi:lamp'
+        size: 90%
+        state:
+          - color: 'rgb(28, 128, 199)'
+            value: 'on'
+        styles:
+          card:
+            - border-radius: 20px
+          name:
+            - font-size: 15px
+        type: 'custom:button-card'
+    type: horizontal-stack
+  - card_type: icon
+    icon: 'mdi:undo-variant'
+    size: 10%
+    styles:
+      card:
+        - border-radius: 20px
+        - font-size: 18px
+    tap_action:
+      action: navigate
+      navigation_path: /lovelace/mobile
+    type: 'custom:button-card'

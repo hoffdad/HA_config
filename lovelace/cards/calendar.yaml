@@ -1,0 +1,24 @@
+entities:
+  - entity: calendar.family_calendar
+  - entity: calendar.michael_s_calendar
+  - entity: calendar.101852_students_mentorschools_org
+  - entity: calendar.michelle_s_calendar
+  - entity: calendar.kiera_s_calendar
+  - entity: calendar.holidays_in_united_states
+  - entity: calendar.contacts
+locationIconColor: darkred
+showColors: true
+showProgressBar: false
+title: "" #Family Calendar
+timeColor: "hsl(var(--huesat) 40%)"
+noEventsForTodayText: true
+titleSize: 105
+type: 'custom:atomic-calendar'
+style: |
+  ha-card {
+    font-family: var(--primary-font-family);
+    padding-bottom: '0px'
+  }
+  .card-header {
+      font-size: 0px;
+  }

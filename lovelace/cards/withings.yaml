@@ -1,0 +1,24 @@
+type: horizontal-stack
+cards:
+  - type: entities
+    title: Michael
+    show_header_toggle: false
+    style: |
+      ha-card {
+        font-family: var(--primary-font-family);
+        padding-bottom: '0px'
+      }
+    entities:
+      - entity: sensor.withings_weight_lbs_michael
+        name: Weight
+        view_icon: false
+      - entity: sensor.withings_muscle_mass_lbs_michael
+        name: Muscle Mass
+      - entity: sensor.withings_fat_mass_lbs_michael
+        name: Fat Mass
+      - entity: sensor.withings_bone_mass_lbs_michael
+        name: Bone Mass
+      - entity: sensor.withings_fat_ratio_pct_michael
+        name: Fat Ratio
+  - type: picture
+    image: /local/images/michael/michael_pullup.png
